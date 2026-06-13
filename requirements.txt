@@ -1,0 +1,60 @@
+# Core dependencies
+opencv-python==4.8.1.78
+# 10.1.x: ImageDraw can break on some Windows builds. Cap <11: streamlit 1.28.x requires pillow<11.
+Pillow>=10.2.0,<11
+# Optional (From image: auto page orientation if EXIF missing): pip install pytesseract, install Tesseract binary, and ensure it is on PATH. Disable with AUTO_IMAGE_TESSERACT_OSD=0.
+# 1.24.x has no cp312 wheels — pip tries to compile from source and fails. Use 1.26+ for Python 3.12.
+numpy>=1.26.4,<2.0
+
+# OCR libraries - EasyOCR is excellent for various fonts and orientations
+easyocr==1.7.0
+# TrOCR (optional backend trocr_hybrid in ocr_translator): uses transformers+torch below; first run downloads the HF model (e.g. microsoft/trocr-base-handwritten).
+# Optional OCR backend (selected in UI): install both packages to enable PaddleOCR mode.
+# On some Windows/Python combos, install from Paddle's official wheels if pip resolver fails.
+# paddleocr>=2.8.1
+# paddlepaddle>=2.6.0
+# Paddle on Windows requires protobuf<=3.20.2 (google-cloud-translate pulls newer by default)
+protobuf==3.20.2
+# Heal glued English subtitle words after OCR (e.g. Iwear -> i wear)
+wordninja>=2.0.0
+
+# Translation libraries - Using local transformer models (offline)
+# 4.35 pins tokenizers<0.15 which often builds from source (Rust) on py312. Newer 4.x ships wheels.
+transformers>=4.40.0,<5.0
+# Pulled in by transformers for NLLB model cache; pin range matches transformers.
+huggingface_hub>=0.34.0,<1.0
+# Optional; useful for HF Trainer / device_map workflows (not required for NLLB-600M inference)
+accelerate>=0.27.0
+# TrOCR fine-tuning / evaluation on large OCR datasets
+datasets>=2.19.0,<3.0
+evaluate>=0.4.2,<1.0
+jiwer>=3.0.4,<4.0
+# torch 2.1 has no Python 3.12 wheels on Windows; 2.2+ does.
+# For NVIDIA GPUs, install the CUDA build from https://pytorch.org/get-started/locally/ (CPU-only wheel will not use GPU).
+torch>=2.2.0,<3.0
+# Faster R-CNN detection training in standalone_ocr_medium.py (keep roughly aligned with torch major).
+torchvision>=0.17.0,<1.0
+# 0.1.99 has no cp312 wheels on Windows (builds from source). Use 0.2+ for prebuilt wheels.
+sentencepiece>=0.2.0
+
+# Web interface
+streamlit==1.28.1
+
+# Utilities
+python-dotenv==1.0.0
+# OCR Studio history / saved translations when MONGODB_URI is set
+pymongo>=4.6.0,<5.0
+requests>=2.28.0
+google-cloud-translate>=3.15.0
+# OpenAI Chat API for GPT translation (optional provider)
+openai>=1.40.0
+# FFmpeg binary for H.264 transcoding (OpenCV on Windows often breaks on OpenH264 DLL)
+imageio-ffmpeg>=0.4.9
+
+# Arabic text on image (reshape + RTL)
+arabic-reshaper>=3.0.0
+python-bidi>=0.4.2
+
+# Handwriting tab: PDF rasterization + bilingual PDF export
+pymupdf>=1.24.0
+reportlab>=4.0.0

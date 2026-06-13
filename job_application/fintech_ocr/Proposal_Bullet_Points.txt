@@ -1,0 +1,38 @@
+PASTE INTO "Additional details" / proposal form (plain text)
+================================================================
+
+RELEVANT OCR EXPERIENCE
+- Built Translate Studio: multi-engine document OCR (PaddleOCR, EasyOCR, TrOCR) in Python
+- Isolated OCR worker subprocess for stable GPU/CPU inference (production-style pattern)
+- Image preprocessing: denoise, contrast, resolution control, optional DL denoising (RIDNet)
+- Structured output: text + bounding boxes + confidence per detected region
+- Benchmarked with CER/WER on fair datasets (Arabic line OCR CER ~0.19; FUNSD full-page CER ~0.43)
+
+BACKEND / API
+- Modular OCR core separated from UI — ready to expose as FastAPI REST endpoints
+- Experience integrating Google Cloud APIs with credential-based auth (no secrets in code)
+- Can integrate AWS Textract / Google Vision / Tesseract via engine adapter per your spec
+
+COMPUTER VISION / SIMILARITY
+- Image normalization and quality-aware preprocessing pipelines
+- Video frame deduplication and bbox merge logic (extendable to document similarity scoring)
+- Can deliver POST /compare endpoint (SSIM, perceptual hash, or embedding similarity) for KYC/fraud
+
+SECURITY (SOC 2–ALIGNED APPROACH)
+- TLS in transit, encrypted storage at rest, secrets manager, audit logs, PII redaction in logs
+- Input validation, rate limits, retention policies — implemented to your compliance scope
+- CPU-only deployment option to reduce GPU/driver attack surface
+
+BETA TIMELINE (MILESTONE-BASED, FIXED PRICE OK)
+- M1 (3–5d): API contract + auth + staging
+- M2 (5–7d): POST /v1/documents/ocr — image/PDF → structured JSON
+- M3 (5–7d): Preprocess + pluggable OCR engines
+- M4 (5–10d): Security hardening per your SOC 2 checklist
+- M5 (3–5d): Docker deploy, docs, load test
+- Total beta: 3–5 weeks (1 engineer, clear spec)
+
+WORK SAMPLE
+- Translate Studio repo + eval JSON (ocr_results, funsd_fullpage_test)
+- Key files: paddle_ocr_worker.py, ocr_translator.py, eval_experimental_results.py
+
+AVAILABLE FOR: fixed-price or milestone contract. Happy to walk through spec on a short call.

@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.venv311/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (Hugging Face token, etc.)
+.env
+.env.local
+
+# Project specific
+models/
+paddle_arabic_standalone_data/
+easyocr_standalone_data/
+craft_train/
+trocr_arabic_hf_mini/
+trocr_arabic_hf_smoke/
+benchmark_data/
+paddle_arabic_standalone_check_output/
+paddle_arabic_standalone_experiments/
+ocr_standalone_smoke/
+ocr_standalone_smoke_det_out/
+assets/
+_werr.txt
+~$*
+~WRL*
+*.tmp
+zerodce_test.pth
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.mp4
+*.avi
+*.mov
+results/
+output/
+temp/
+*.json
+!requirements*.json
+!package.json
+!package-lock.json
+
+# Local studio cache
+.ocr_studio_history.json
+.ocr_studio_saved_translations.json
+
+# EasyOCR models (downloaded automatically)
+.easyocr/
+
+# Standalone OCR experiments (standalone_ocr_medium.py — not used by the app)
+ocr_standalone_data/
+ocr_standalone_experiments/
+
+# Streamlit
+.streamlit/

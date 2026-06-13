@@ -1,0 +1,2 @@
+engine,dataset,n_samples,cer_mean,wer_mean,cer_median,wer_median,exact_match_rate,elapsed_sec
+paddleocr(pretrained),Arabic rec (val),222,0.1917,0.5946,0.125,1.0,0.4279,35.51
